@@ -1,0 +1,19 @@
+{
+  "users": {
+    "name": "users",
+    "columns": [
+      { "name": "id", "type": "SERIAL", "primaryKey": true },
+      { "name": "username", "type": "VARCHAR(50)", "primaryKey": false },
+      { "name": "email", "type": "VARCHAR(100)", "primaryKey": false },
+      { "name": "password", "type": "VARCHAR(100)", "primaryKey": false }
+    ]
+  },
+  "posts": {
+    "name": "posts",
+    "columns": [
+      { "name": "id", "type": "SERIAL", "primaryKey": true },
+      { "name": "title", "type": "VARCHAR(255)", "primaryKey": false },
+      { "name": "content", "type": "TEXT", "primaryKey": false }
+    ]
+  }
+}
