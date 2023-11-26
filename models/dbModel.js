@@ -32,22 +32,38 @@ const loadSchema = async () => {
 
 // Function to check if a table with the given name exists in the database
 const tableExists = async (tableName) => {
-  const result = await pool.query(`SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = $1)`, [tableName])
-  return result.rows[0].exists
+  const client = await pool.connect();
+  try {
+    const result = await client.query(`SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = $1)`, [tableName]);
+    return result.rows[0].exists;
+  } finally {
+    client.release();
+  }
 }
 
 // Function to retrieve column names for a given table
 const getTableColumns = async (tableName) => {
-  const getColumnsQuery = `SELECT column_name FROM information_schema.columns WHERE table_name = '${tableName}'`
-  const result = await pool.query(getColumnsQuery)
-  return result.rows.map(row => row.column_name)
+  const client = await pool.connect();
+  try {
+    const getColumnsQuery = `SELECT column_name FROM information_schema.columns WHERE table_name = $1`;
+    const result = await client.query(getColumnsQuery, [tableName]);
+    return result.rows.map(row => row.column_name);
+  } finally {
+    client.release();
+  }
 }
 
 // Function to add columns to a table if they do not exist
 const addColumnsToTable = async (tableName, columns) => {
-  for (const column of columns) {
-    const alterTableQuery = `ALTER TABLE ${tableName} ADD COLUMN ${column} VARCHAR(255)`
-    await pool.query(alterTableQuery)
+  const client = await pool.connect();
+  try {
+    for (const column of columns) {
+      const { name, type } = column;
+      const alterTableQuery = `ALTER TABLE ${tableName} ADD COLUMN ${column} VARCHAR(255)`
+      await client.query(alterTableQuery);
+    }
+  } finally {
+    client.release();
   }
 }
 

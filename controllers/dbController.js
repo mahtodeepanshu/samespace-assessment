@@ -24,6 +24,7 @@ const createRecord = async (req, res) => {
       const existingColumns = await getTableColumns(collection)
       
       // Check if each key in the data exists as a column
+      // Extract non-existing columns along with their types
       const nonExistingColumns = Object.keys(data).filter((key) => !existingColumns.includes(key))
       
       // If there are non-existing columns, add them to the table
@@ -122,7 +123,7 @@ const updateRecord = async (req, res) => {
 
       // Check if each key in the data exists as a column
       const nonExistingColumns = Object.keys(data).filter((key) => !existingColumns.includes(key))
-
+      
       // If there are non-existing columns, add them to the table
       if (nonExistingColumns.length > 0) {
         await addColumnsToTable(collection, nonExistingColumns)

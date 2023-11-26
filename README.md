@@ -136,20 +136,16 @@ Implements robust error handling and rollback mechanisms within transactions for
 
 
 ## Scope for Improvement
- - #### Input Validation:
-   - This can be improved in controllers to ensure that the received data is valid and secure, preventing potential security vulnerabilities.
+- **Dynamic Column Defintions**: Allowing configuration of column types based on the schema definition. For example, if the schema specifies a column as a number, use an appropriate numeric type in the database (e.g., `INTEGER`, `NUMERIC`, etc.).
 
-- #### Logging:
-  - This can be enhanced to provide more detailed information about errors, transactions, and critical events. This can aid in debugging and monitoring.
+- **Input Validation**: This can be improved in controllers to ensure that the received data is valid and secure, preventing potential security vulnerabilities.
 
-- #### Middleware:
-  - We can consider using middleware functions to handle common functionalities like request logging, authentication, and validation. This can improve code modularity.
+- **Logging**: This can be enhanced to provide more detailed information about errors, transactions, and critical events. This can aid in debugging and monitoring.
 
-- #### Unit Testing:
-  - Unit test coverage can be improvised, particularly for edge cases and error scenarios. Ensure that all critical functions are tested thoroughly.
+- **Middleware**: We can consider using middleware functions to handle common functionalities like request logging, authentication, and validation. This can improve code modularity.
 
-- #### Database Schema Evolution:
-  - Schema evolution mechanism can be implemented to handle changes gracefully without losing data, especially in a production environment.
+- **Unit Testing**: Unit test coverage can be improvised, particularly for edge cases and error scenarios. Ensure that all critical functions are tested thoroughly.
 
-- #### Concurrency Stress Testing:
-  - Performing concurrency stress testing can be done to ensure the application can handle a high volume of concurrent requests gracefully.
+- **Database Schema Evolution**: Schema evolution mechanism can be implemented to handle changes gracefully without losing data, especially in a production environment.
+
+- **Concurrency Stress Testing**: Performing concurrency stress testing can be done to ensure the application can handle a high volume of concurrent requests gracefully.
