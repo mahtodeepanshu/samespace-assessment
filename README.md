@@ -45,21 +45,21 @@ This will start the server on `http://localhost:3000.`
 
 ### API Endpoints
 
-####Create Record:
+#### Create Record:
   - Endpoint: `POST /:collection`
   - Example: `POST /users`
   - Request Body: JSON data representing the new record.
 
-###Read Record:
+#### Read Record:
   - Endpoint: `GET /:collection/:id`
   - Example: `GET /users/123`
   - Response: JSON data of the specified record.
 
-###Update Record:
+### Update Record:
   - Endpoint: `POST /:collection/:id`
   - Example: `POST /users/123`
   - Request Body: JSON data with the updated values.
 
-###Delete Record:
+#### Delete Record:
   - Endpoint: `DELETE /:collection/:id`
   - Example: `DELETE /users/123`
