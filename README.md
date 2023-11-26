@@ -9,6 +9,7 @@ This project aims to create a generic database proxy that provides a REST API fo
 - **Framework:** `Express` (used for handling HTTP requests)
 - **Database:** `PostgreSQL`
 - **Schema Format:** `JSON`
+- **Architecture:** `MVC - Model, View, Controller`
 
 ## Prerequisites
 
